@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="skills">
+      <div class="skill-card">
+        <div class="skill">
+          <div class="outer">
+            <div class="inner">
+              <div id="number-js"></div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+            <defs>
+              <linearGradient id="GradientColorJs">
+                <stop offset="0%" stop-color="#e91e63" />
+                <stop offset="100%" stop-color="#673ab7" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-circle progress-js" cx="80" cy="80" r="70" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="text">Javascript</div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill">
+          <div class="outer">
+            <div class="inner">
+              <div id="number-html"></div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+            <defs>
+              <linearGradient id="GradientColorHtml">
+                <stop offset="0%" stop-color="#e91e63" />
+                <stop offset="100%" stop-color="#673ab7" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-circle progress-html" cx="80" cy="80" r="70" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="text">HTML</div>
+      </div>
+    </div>
+
+
+<script>
+  const numberJs = document.getElementById('number-js');
+  const numberHtml = document.getElementById('number-html');
+
+  const animateProgress = (el, target, stepDelay) => {
+    let counter = 0;
+    const timer = setInterval(() => {
+      if (counter === target) {
+        clearInterval(timer);
+      } else {
+        counter += 1;
+        el.innerHTML = counter + "%";
+      }
+    }, stepDelay);
+  };
+
+  animateProgress(numberJs, 65, 25);
+  animateProgress(numberHtml, 80, 20);
+</script>
+
+
+
+</body>
+</html>

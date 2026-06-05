@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="hero">
+        <h3>Coming Soon!</h3>
+        <h1>OurBrand New <br> Website Is On It's Way</h1>
+        <p>Subscribe for more details!</p>
+        <form name="submit-to-google" >
+            <input type="email" name="Email" placeholder="Enter Your Email" required>
+            <button type="submit"><img src="send-icon.png" width="20px"></button>
+        </form>
+        <span id="msg">
+             
+        </span>
+    </div>
+ <script>
+	const scriptURL = ' https://script.google.com/macros/s/AKfycbwfoqCGZ8tusLF1xXkLdwpkT0NvI3U-oojMvF4OkVLJ4RUYnBQmF5eiX3tP8UN8SskY/exec'
+
+	const form = document.forms['submit-to-google']
+
+	form.addEventListener('submit', e => {
+		e.preventDefault()
+		fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+			.then(response => response.json())
+			.then(response => {
+				console.log('Success!', response);
+				document.getElementById('msg').innerText = 'Thank You For Subscribing!';
+			})
+			.catch(error => console.error('Error!', error.message))
+	})
+</script>
+</body>
+</html>
